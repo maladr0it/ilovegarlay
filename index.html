@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
+    <title>❤️</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
@@ -107,13 +107,15 @@
 
   <body>
     <main>
-      <h1 class="title">Garlay, will you marry me?</h1>
-      <div class="buttons" id="buttons">
-        <div class="buttonContainer buttonContainer--left">
-          <button class="button" id="yes-button">Yes</button>
-        </div>
-        <div class="buttonContainer buttonContainer--right">
-          <button class="button" id="no-button">No</button>
+      <div id="question">
+        <h1 class="title">Garlay, will you marry me?</h1>
+        <div class="buttons" id="buttons">
+          <div class="buttonContainer buttonContainer--left">
+            <button class="button" id="yes-button">Yes</button>
+          </div>
+          <div class="buttonContainer buttonContainer--right">
+            <button class="button" id="no-button">No</button>
+          </div>
         </div>
       </div>
       <div class="successMessage" id="success-message">Team Dream!</div>
@@ -123,6 +125,7 @@
       const buttonsEl = document.getElementById("buttons");
       const yesButtonEl = document.getElementById("yes-button");
       const noButtonEl = document.getElementById("no-button");
+      const questionEl = document.getElementById("question");
       const successMessageEl = document.getElementById("success-message");
 
       noButtonEl.addEventListener("mouseenter", () => {
@@ -136,6 +139,7 @@
 
       yesButtonEl.addEventListener("click", () => {
         successMessageEl.classList.add("successMessage--visible");
+        questionEl.hidden = "true";
       });
     </script>
   </body>
