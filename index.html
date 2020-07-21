@@ -91,15 +91,19 @@
       }
 
       .successMessage {
-        margin-top: 32px;
         font-size: 72px;
-        color: transparent;
-        transition: all 0.4s ease-out;
+        animation: neon-on 0.4s ease-out;
+        animation-fill-mode: forwards;
       }
 
-      .successMessage--visible {
-        color: var(--neon-on-color);
-        text-shadow: 0 0 16px var(--neon-on-color);
+      @keyframes neon-on {
+        from {
+          color: transparent;
+        }
+        to {
+          color: var(--neon-on-color);
+          text-shadow: 0 0 16px var(--neon-on-color);
+        }
       }
     </style>
   </head>
@@ -117,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="successMessage" id="success-message">Team Dream!</div>
+      <div class="successMessage" id="success-message" hidden>Team Dream!</div>
     </main>
 
     <script>
@@ -137,8 +141,8 @@
       });
 
       yesButtonEl.addEventListener("click", () => {
-        successMessageEl.classList.add("successMessage--visible");
-        questionEl.hidden = "true";
+        successMessageEl.hidden = false;
+        questionEl.hidden = true;
       });
     </script>
   </body>
