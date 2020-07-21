@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>❤️</title>
+    <title>&lt;3 Garlay</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAj0lEQVR42mNgwA/+QzFZ4P+ZpDX/QYAcQ/6fcwgAGwDCIDaphvyfpaAO1gjCIDYpBvzvmrsSjEEaQfjApd9gTIwhYI2FJVlwDDMMhIkxBK4JKQb+wwwmZAC6Zqyuw2cI2AACTqSxAXicT5QaQn6ExxDegEQzBI5BYkS4EBETsMQDw8TYjmIINkxScsaBMQAABF3cXLxaPbkAAAAASUVORK5CYII="
+    />
     <style>
       *,
       *::before,
@@ -69,12 +74,16 @@
         color: var(--neon-off-color);
         background-color: transparent;
         cursor: pointer;
-        transition: transform 0.4s ease-out;
+        transition: all 0.4s ease-out;
       }
 
       .button:hover,
       .button:focus {
-        animation: neon-on 0.4s forwards ease-out;
+        border-color: var(--neon-on-color);
+        color: var(--neon-on-color);
+        text-shadow: 0 0 16px var(--neon-on-color);
+        box-shadow: 0 0 16px -1px var(--neon-on-color),
+          0 0 12px -1px var(--neon-on-color) inset;
       }
 
       .buttons--switched .button {
@@ -91,16 +100,6 @@
       .successMessage--visible {
         color: var(--neon-on-color);
         text-shadow: 0 0 16px var(--neon-on-color);
-      }
-
-      @keyframes neon-on {
-        to {
-          border-color: var(--neon-on-color);
-          color: var(--neon-on-color);
-          text-shadow: 0 0 16px var(--neon-on-color);
-          box-shadow: 0 0 16px -1px var(--neon-on-color),
-            0 0 12px -1px var(--neon-on-color) inset;
-        }
       }
     </style>
   </head>
