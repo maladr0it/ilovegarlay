@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      :root {
+        height: 100%;
+        --buttons-gap: 64px;
+        --text-color: rgb(255, 105, 180, 0.75);
+        --neon-on-color: rgb(255, 105, 180);
+        --neon-off-color: rgba(255, 105, 180, 0.5);
+      }
+
+      body {
+        display: grid;
+        place-content: center;
+        min-height: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+        font-weight: 300;
+        font-family: sans-serif;
+        color: var(--text-color);
+        background-color: #121212;
+      }
+
+      .title {
+        font-size: 48px;
+        font-weight: 300;
+      }
+
+      .buttons {
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        gap: var(--buttons-gap);
+      }
+
+      .buttonContainer {
+        width: 100%;
+        transition: transform 0.4s ease-out;
+      }
+
+      .buttonContainer--left {
+        transform-origin: calc((200% + var(--buttons-gap)) / 2);
+      }
+
+      .buttonContainer--right {
+        transform-origin: calc((-1 * var(--buttons-gap)) / 2);
+      }
+
+      .buttons--switched .buttonContainer {
+        transform: rotate(180deg);
+      }
+
+      .button {
+        width: 128px;
+        height: 64px;
+        border: 2px solid var(--neon-off-color);
+        border-radius: 4px;
+        font-size: 32px;
+        color: var(--neon-off-color);
+        background-color: transparent;
+        cursor: pointer;
+        transition: transform 0.4s ease-out;
+      }
+
+      .button:hover,
+      .button:focus {
+        animation: neon-on 0.4s forwards ease-out;
+      }
+
+      .buttons--switched .button {
+        transform: rotate(-180deg);
+      }
+
+      .successMessage {
+        margin-top: 32px;
+        font-size: 72px;
+        color: transparent;
+        transition: all 0.4s ease-out;
+      }
+
+      .successMessage--visible {
+        color: var(--neon-on-color);
+        text-shadow: 0 0 16px var(--neon-on-color);
+      }
+
+      @keyframes neon-on {
+        to {
+          border-color: var(--neon-on-color);
+          color: var(--neon-on-color);
+          text-shadow: 0 0 16px var(--neon-on-color);
+          box-shadow: 0 0 16px -1px var(--neon-on-color),
+            0 0 12px -1px var(--neon-on-color) inset;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1 class="title">Garlay, will you marry me?</h1>
+      <div class="buttons" id="buttons">
+        <div class="buttonContainer buttonContainer--left">
+          <button class="button" id="yes-button">Yes</button>
+        </div>
+        <div class="buttonContainer buttonContainer--right">
+          <button class="button" id="no-button">No</button>
+        </div>
+      </div>
+      <div class="successMessage" id="success-message">Team Dream!</div>
+    </main>
+
+    <script>
+      const buttonsEl = document.getElementById("buttons");
+      const yesButtonEl = document.getElementById("yes-button");
+      const noButtonEl = document.getElementById("no-button");
+      const successMessageEl = document.getElementById("success-message");
+
+      noButtonEl.addEventListener("mouseenter", () => {
+        buttonsEl.classList.toggle("buttons--switched");
+      });
+
+      noButtonEl.addEventListener("focus", () => {
+        yesButtonEl.focus();
+        buttonsEl.classList.toggle("buttons--switched");
+      });
+
+      yesButtonEl.addEventListener("click", () => {
+        successMessageEl.classList.add("successMessage--visible");
+      });
+    </script>
+  </body>
+</html>
